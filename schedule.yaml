@@ -1,0 +1,8 @@
+{
+  "time-zone" : "europe/london",
+  "notification-type" : "telegram",
+  "cron-schedule" : "* * * * *",
+  "shows": [
+    "Love Live! Superstar!!"
+  ]
+}
