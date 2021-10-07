@@ -12,14 +12,14 @@ import (
 )
 
 const (
-	iso8601 = "2006-01-02T15:04:05-0700"
+	iso8601 = "2006-01-02"
 )
 
 var tgChatId, _ = strconv.ParseInt(util.GetEnvVar("TG_CHAT_ID"), 10, 64)
 
 func SendMessage(bot *tgbot.BotAPI, shows []models.ScheduleItem) {
 	var b strings.Builder
-	b.WriteString(fmt.Sprintf("--- AIRING TODAY--- %s\n", time.Now().Format(iso8601)))
+	b.WriteString(fmt.Sprintf("AIRING TODAY : %s\n", time.Now().Format(iso8601)))
 
 	for _, show := range shows {
 		b.WriteString(fmt.Sprintf("%s\n", show.Title))
