@@ -3,6 +3,11 @@
   "notification-type" : "telegram",
   "cron-schedule" : "* * * * *",
   "shows": [
-    "Love Live! Superstar!!"
+    "Takt Op. Destiny",
+    "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
+    "Platinum End",
+    "Jahy-sama wa Kujikenai!",
+    "Mushoku Tensei",
+    "Ganbare Douki-chan"
   ]
 }

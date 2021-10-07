@@ -1,4 +1,4 @@
-package spservice
+package subsplease
 
 import (
 	"fmt"

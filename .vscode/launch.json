@@ -9,7 +9,7 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            //"envFile": "${workspaceRoot}/.env",
+            "envFile": "${workspaceRoot}/.env",
             "program": "${workspaceRoot}/main.go"
         }
     ]

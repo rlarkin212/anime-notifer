@@ -1,10 +1,11 @@
 package helpers
 
-import "sort"
+func SliceToStrMap(s []string) map[string]struct{} {
+	m := make(map[string]struct{})
 
-func Contains(s []string, searchTerm string) bool {
-	i := sort.SearchStrings(s, searchTerm)
-	ret := i < len(s) && s[i] == searchTerm
+	for _, i := range s {
+		m[i] = struct{}{}
+	}
 
-	return ret
+	return m
 }
