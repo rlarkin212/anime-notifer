@@ -1,12 +1,13 @@
 {
   "time-zone" : "europe/london",
-  "notification-type" : "telegram",
-  "cron-schedule" : "* * * * *",
   "shows": [
     "Takt Op. Destiny",
+    "Deep Insanity: THE LOST CHILD",
     "Sekai Saikou no Ansatsusha, Isekai Kizoku ni Tensei suru",
     "Platinum End",
     "Jahy-sama wa Kujikenai!",
+    "Senpai ga Uzai Kouhai no Hanashi",
+    "Mieruko-chan",
     "Mushoku Tensei",
     "Ganbare Douki-chan"
   ]

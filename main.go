@@ -3,9 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
-	"os/signal"
-	"syscall"
 
 	tgbot "github.com/go-telegram-bot-api/telegram-bot-api"
 	"github.com/rlarkin212/anime-notifer/helpers"
@@ -13,7 +10,6 @@ import (
 	"github.com/rlarkin212/anime-notifer/subsplease"
 	"github.com/rlarkin212/anime-notifer/telegram"
 	"github.com/rlarkin212/anime-notifer/util"
-	"github.com/robfig/cron/v3"
 )
 
 const (
@@ -26,29 +22,15 @@ func main() {
 	userSchedule := models.UserSchedule{}
 	_ = util.ParseYaml(&userSchedule)
 
-	fmt.Println(userSchedule.CronSchedule)
-
-	cron := cron.New()
-	cron.AddFunc(userSchedule.CronSchedule, func() {
-		execute(userSchedule)
-	})
-
-	errs := make(chan error, 1)
-	go cron.Start()
+	fmt.Println(userSchedule)
 
 	execute(userSchedule)
-
-	go func() {
-		c := make(chan os.Signal, 1)
-		signal.Notify(c, syscall.SIGINT)
-		errs <- fmt.Errorf("%s", <-c)
-	}()
-
-	fmt.Printf("Terminated %s", <-errs)
 }
 
 func execute(userSchedule models.UserSchedule) {
 	schedule := subsplease.FetchSchedule(baseUrl, userSchedule.TimeZone)
+	fmt.Println(schedule.Schedule)
+
 	inSchedule := []models.ScheduleItem{}
 	usMap := helpers.SliceToStrMap(userSchedule.Shows)
 
@@ -65,5 +47,7 @@ func execute(userSchedule models.UserSchedule) {
 		}
 
 		telegram.SendMessage(bot, inSchedule)
+	} else {
+		fmt.Println("no shows today")
 	}
 }
