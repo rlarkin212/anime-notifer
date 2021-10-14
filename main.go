@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"fmt"
 	"log"
 
@@ -18,18 +19,13 @@ const (
 
 var tgApi = util.GetEnvVar("TG_API_TOKEN")
 
+//go:embed schedule.yaml
+var file []byte
+var userSchedule models.UserSchedule
+
 func main() {
-	userSchedule := models.UserSchedule{}
-	_ = util.ParseYaml(&userSchedule)
-
-	fmt.Println(userSchedule)
-
-	execute(userSchedule)
-}
-
-func execute(userSchedule models.UserSchedule) {
+	util.ParseYaml(file, &userSchedule)
 	schedule := subsplease.FetchSchedule(baseUrl, userSchedule.TimeZone)
-	fmt.Println(schedule.Schedule)
 
 	inSchedule := []models.ScheduleItem{}
 	usMap := helpers.SliceToStrMap(userSchedule.Shows)
@@ -43,7 +39,7 @@ func execute(userSchedule models.UserSchedule) {
 	if len(inSchedule) > 0 {
 		bot, err := tgbot.NewBotAPI(tgApi)
 		if err != nil {
-			log.Fatal(err.Error())
+			log.Fatal(fmt.Sprintf("telegram bot err: %s", err.Error()))
 		}
 
 		telegram.SendMessage(bot, inSchedule)

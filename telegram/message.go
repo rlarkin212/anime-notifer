@@ -2,6 +2,7 @@ package telegram
 
 import (
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 	"time"
@@ -15,17 +16,20 @@ const (
 	iso8601 = "2006-01-02"
 )
 
-var tgChatId, _ = strconv.ParseInt(util.GetEnvVar("TG_CHAT_ID"), 10, 64)
-
 func SendMessage(bot *tgbot.BotAPI, shows []models.ScheduleItem) {
+	tgChatId, err := strconv.ParseInt(util.GetEnvVar("TG_CHAT_ID"), 10, 64)
+	if err != nil {
+		log.Fatal(fmt.Sprintf("parse int err: %s", err))
+	}
+
 	var b strings.Builder
 	b.WriteString(fmt.Sprintf("AIRING TODAY : %s\n", time.Now().Format(iso8601)))
 
 	for _, show := range shows {
+		b.WriteString("-----------------\n")
 		b.WriteString(fmt.Sprintf("%s\n", show.Title))
 		b.WriteString(fmt.Sprintf("%s\n", show.Time))
-		b.WriteString(fmt.Sprintf("https://subsplease.org%s\n", show.ImageURL))
-		b.WriteString("-----------------")
+		b.WriteString("-----------------\n")
 	}
 
 	msg := tgbot.NewMessage(tgChatId, b.String())

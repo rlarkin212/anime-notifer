@@ -14,7 +14,7 @@ func FetchSchedule(baseUrl string, timeZone string) models.ScheduleResponse {
 
 	res, err := http.Get(url)
 	if err != nil {
-		log.Fatal(err.Error())
+		log.Fatal(fmt.Sprintf("fetch schedule err : %s", err.Error()))
 	}
 
 	schedule := models.ScheduleResponse{}
