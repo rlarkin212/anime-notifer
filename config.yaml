@@ -1,0 +1,17 @@
+{
+  env: "dev",
+  shows: [
+    "Platinum End",
+    "Shuumatsu no Harem",
+    "Slow Loop",
+    "Tribe Nine"
+  ],
+  subsPlease: {
+    "baseUrl": "https://subsplease.org/api/?f=schedule&h=true",
+    "timeZone": "europe/london"
+  },
+  telegram: {
+    "token": "${TG_API_TOKEN}",
+    "chatId": "${TG_CHAT_ID}"
+  }
+}

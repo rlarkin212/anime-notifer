@@ -1,11 +1,11 @@
-package models
+package subsplease
 
-type ScheduleResponse struct {
-	Tz       string         `json:"tz"`
-	Schedule []ScheduleItem `json:"schedule"`
+type Response struct {
+	Tz       string `json:"tz"`
+	Schedule []Item `json:"schedule"`
 }
 
-type ScheduleItem struct {
+type Item struct {
 	Title    string `json:"title"`
 	Page     string `json:"page"`
 	ImageURL string `json:"image_url"`
