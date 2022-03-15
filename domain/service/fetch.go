@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"log"
 	"strings"
 	"time"
 
@@ -39,7 +40,7 @@ func (fs *fetchService) FetchSchedule() {
 	schedule := fs.subsPlease.Fetch()
 	inSchedule := fs.checkSchedule(schedule)
 
-	if len(schedule.Schedule) > 0 {
+	if len(inSchedule) > 0 {
 		msg := buildMessage(inSchedule)
 		fs.notify(msg)
 	}
@@ -58,6 +59,8 @@ func (fs *fetchService) checkSchedule(schedule *sp.Response) []sp.Item {
 			items = append(items, s)
 		}
 	}
+
+	log.Println(fmt.Printf("%d shows on your schedule today", len(items)))
 
 	return items
 }

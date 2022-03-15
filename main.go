@@ -16,7 +16,7 @@ var err error
 func main() {
 	c, err = util.LoadConfig(".", "config", "yaml")
 	if err != nil {
-		log.Fatal(fmt.Printf("config load err %s", err.Error()))
+		log.Println(fmt.Printf("config load err %s", err))
 	}
 
 	if c.Env == "prod" {
