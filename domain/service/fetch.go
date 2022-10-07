@@ -60,7 +60,17 @@ func (fs *fetchService) checkSchedule(schedule *sp.Response) []sp.Item {
 		}
 	}
 
-	log.Println(fmt.Printf("%d shows on your schedule today", len(items)))
+	currentDay := time.Now().Weekday().String()
+	for _, x := range fs.config.ManualShows {
+		if x.Day == currentDay {
+			items = append(items, sp.Item{
+				Title: x.Name,
+				Time:  x.Time,
+			})
+		}
+	}
+
+	log.Printf("%d shows on your schedule today ", len(items))
 
 	return items
 }

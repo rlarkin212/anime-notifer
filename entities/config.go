@@ -1,10 +1,17 @@
 package entities
 
 type Config struct {
-	Env        string     `mapstructure:"env"`
-	Shows      []string   `mapstructure:"shows"`
-	SubsPlease subsPlease `mapstructure:"subsPlease"`
-	Telegram   telegram   `mapstructure:"telegram"`
+	Env         string       `mapstructure:"env"`
+	Shows       []string     `mapstructure:"shows"`
+	SubsPlease  subsPlease   `mapstructure:"subsPlease"`
+	Telegram    telegram     `mapstructure:"telegram"`
+	ManualShows []manualShow `mapstructure:"manualShows"`
+}
+
+type manualShow struct {
+	Name string `mapstructure:"name"`
+	Day  string `mapstructure:"day"`
+	Time string `mapstructure:"time"`
 }
 
 type subsPlease struct {

@@ -1,16 +1,20 @@
-{
-  env: "${ENV}",
-  shows: [
-    "Platinum End",
-    "Shuumatsu no Harem",
-    "Slow Loop"
-  ],
-  subsPlease: {
-    "baseUrl": "https://subsplease.org/api/?f=schedule&h=true",
-    "timeZone": "europe/london"
-  },
-  telegram: {
-    "token": "${TG_API_TOKEN}",
-    "chatId": "${TG_CHAT_ID}"
-  }
-}
+env: '${ENV}'
+shows:
+  - Chainsaw Man
+  - Spy x Family
+  - Uzaki-chan wa Asobitai! S2
+  - Tensei Shitara Ken Deshita
+  - Do It Yourself!!
+  - Renai Flops
+  - Berserk - The Golden Age Arc Memorial Edition
+  - Mobile Suit Gundam - The Witch from Mercury
+manualShows:
+  - name: 'Futoku no Guild'
+    day: 'Wednesday'
+    time: '13:00'
+subsPlease:
+  baseUrl: 'https://subsplease.org/api/?f=schedule&h=true'
+  timeZone: europe/london
+telegram:
+  token: '${TG_API_TOKEN}'
+  chatId: '${TG_CHAT_ID}'

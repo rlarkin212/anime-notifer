@@ -29,13 +29,13 @@ func (sp *subspleaseFetcher) Fetch() *subsplease.Response {
 
 	res, err := http.Get(url)
 	if err != nil {
-		log.Println(fmt.Sprintf("fetch schedule err : %s", err.Error()))
+		log.Printf("fetch schedule err : %s", err.Error())
 	}
 
 	response := &subsplease.Response{}
 	_ = util.UnmarshallResponseBody(res, response)
 
-	log.Println(fmt.Printf("%d shows today", len(response.Schedule)))
+	log.Printf("%d shows today ", len(response.Schedule))
 
 	return response
 }
