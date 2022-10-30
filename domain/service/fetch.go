@@ -11,6 +11,7 @@ import (
 	sp "github.com/rlarkin212/anime-notifer/entities/subsplease"
 	"github.com/rlarkin212/anime-notifer/helpers"
 	"github.com/rlarkin212/anime-notifer/transport/telegram"
+	"github.com/rlarkin212/glinq"
 )
 
 const (
@@ -70,9 +71,13 @@ func (fs *fetchService) checkSchedule(schedule *sp.Response) []sp.Item {
 		}
 	}
 
-	log.Printf("%d shows on your schedule today ", len(items))
+	orderedItems := glinq.OrderBy(items, func(x sp.Item) string {
+		return x.Time
+	})
 
-	return items
+	log.Printf("%d shows on your schedule today ", len(orderedItems))
+
+	return orderedItems
 }
 
 func buildMessage(items []sp.Item) string {

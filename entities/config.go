@@ -5,10 +5,10 @@ type Config struct {
 	Shows       []string     `mapstructure:"shows"`
 	SubsPlease  subsPlease   `mapstructure:"subsPlease"`
 	Telegram    telegram     `mapstructure:"telegram"`
-	ManualShows []manualShow `mapstructure:"manualShows"`
+	ManualShows []ManualShow `mapstructure:"manualShows"`
 }
 
-type manualShow struct {
+type ManualShow struct {
 	Name string `mapstructure:"name"`
 	Day  string `mapstructure:"day"`
 	Time string `mapstructure:"time"`
