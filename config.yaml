@@ -1,20 +1,16 @@
 env: '${ENV}'
 shows:
-  - Chainsaw Man
-  - Spy x Family
-  - Uzaki-chan wa Asobitai! S2
-  - Do It Yourself!!
-  - Renai Flops
-  - Berserk - The Golden Age Arc Memorial Edition
-  - Mobile Suit Gundam - The Witch from Mercury
-  - Arknights - Reimei Zensou
+  - 'Zom 100 - Zombie ni Naru made ni Shitai 100 no Koto'
+  - 'Rurouni Kenshin (2023)'
+  - 'Uchi no Kaisha no Chiisai Senpai no Hanashi'
+  - 'Mushoku Tensei S2'
 manualShows:
-  - name: 'Futoku no Guild'
-    day: 'Wednesday'
-    time: '18:00'
+  # - name: 'Tengoku Daimakyou'
+  #   day: 'Saturday'
+  #   time: '14:00'
 subsPlease:
   baseUrl: 'https://subsplease.org/api/?f=schedule&h=true'
-  timeZone: europe/london
+  timeZone: 'europe/london'
 telegram:
   token: '${TG_API_TOKEN}'
   chatId: '${TG_CHAT_ID}'

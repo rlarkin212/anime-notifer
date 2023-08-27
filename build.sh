@@ -1,4 +1,4 @@
 #!/bin/bash
-
-GOOS=linux go build -o bin/anime-notifer
-zip -j anime-notifer.zip bin/anime-notifer config.yaml
+GOARCH=amd64 GOOS=linux go build -o bin/bootstrap main.go
+cp config.yaml bin/
+# zip -j anime-notifer.zip bin/anime-notifer config.yaml
