@@ -9,7 +9,6 @@ import (
 	"github.com/rlarkin212/anime-notifer/domain/subsplease"
 	"github.com/rlarkin212/anime-notifer/entities"
 	sp "github.com/rlarkin212/anime-notifer/entities/subsplease"
-	"github.com/rlarkin212/anime-notifer/helpers"
 	"github.com/rlarkin212/anime-notifer/transport/telegram"
 	"github.com/rlarkin212/glinq"
 )
@@ -53,11 +52,14 @@ func (fs *fetchService) notify(msg string) {
 
 func (fs *fetchService) checkSchedule(schedule *sp.Response) []sp.Item {
 	items := []sp.Item{}
-	m := helpers.SliceToStrMap(fs.config.Shows)
 
 	for _, s := range schedule.Schedule {
-		if _, ok := m[s.Title]; ok {
-			items = append(items, s)
+		for _, cs := range fs.config.Shows {
+			if s.Title == cs.Title {
+				s.Source = cs.Source
+
+				items = append(items, s)
+			}
 		}
 	}
 
@@ -65,8 +67,9 @@ func (fs *fetchService) checkSchedule(schedule *sp.Response) []sp.Item {
 	for _, x := range fs.config.ManualShows {
 		if x.Day == currentDay {
 			items = append(items, sp.Item{
-				Title: x.Name,
-				Time:  x.Time,
+				Title:  x.Name,
+				Time:   x.Time,
+				Source: x.Source,
 			})
 		}
 	}
@@ -83,11 +86,12 @@ func (fs *fetchService) checkSchedule(schedule *sp.Response) []sp.Item {
 func buildMessage(items []sp.Item) string {
 	var b strings.Builder
 	b.WriteString(fmt.Sprintf("AIRING TODAY : %s\n", time.Now().Format(iso8601)))
+	b.WriteString("-----------------\n")
 
 	for _, item := range items {
-		b.WriteString("-----------------\n")
 		b.WriteString(fmt.Sprintf("%s\n", item.Title))
 		b.WriteString(fmt.Sprintf("%s\n", item.Time))
+		b.WriteString(fmt.Sprintf("%s\n", item.Source))
 		b.WriteString("-----------------\n")
 	}
 

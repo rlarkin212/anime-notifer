@@ -11,4 +11,5 @@ type Item struct {
 	ImageURL string `json:"image_url"`
 	Time     string `json:"time"`
 	Aired    bool   `json:"aired"`
+	Source   string
 }

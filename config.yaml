@@ -1,16 +1,33 @@
-env: '${ENV}'
+env: "${ENV}"
 shows:
-  - 'Zom 100 - Zombie ni Naru made ni Shitai 100 no Koto'
-  - 'Rurouni Kenshin (2023)'
-  - 'Uchi no Kaisha no Chiisai Senpai no Hanashi'
-  - 'Mushoku Tensei S2'
+  - title: "One Room, Hiatari Futsuu, Tenshi-tsuki"
+    source: "Crunchyroll"
+  - title: "Mushoku Tensei S2"
+    source: "Crunchyroll"
+  - title: "Sasayaku You ni Koi wo Utau"
+    source: "Subsplease"
+  - title: "Seiyuu Radio no Uraomote"
+    source: "Crunchyroll"
+  - title: "Yoru no Kurage wa Oyogenai"
+    source: "Subsplease"
+  - title: "Kaijuu 8-gou"
+    source: "Crunchyroll"
+  - title: "Spice and Wolf (2024)"
+    source: "Crunchyroll"
+  - title: "Shuumatsu Train Doko e Iku"
+    source: "Crunchyroll"
 manualShows:
-  # - name: 'Tengoku Daimakyou'
-  #   day: 'Saturday'
-  #   time: '14:00'
+  - name: "An Archdemons Dilemma: How to Love Your Elf Bride"
+    day: "Thursday"
+    time: "17:00"
+    source: "Crunchyroll"
+  - name: "Yozakura-san Chi no Daisakusen"
+    day: "Monday"
+    time: "09:00"
+    source: "Nyaa"
 subsPlease:
-  baseUrl: 'https://subsplease.org/api/?f=schedule&h=true'
-  timeZone: 'europe/london'
+  baseUrl: "https://subsplease.org/api/?f=schedule&h=true"
+  timeZone: "europe/london"
 telegram:
-  token: '${TG_API_TOKEN}'
-  chatId: '${TG_CHAT_ID}'
+  token: "${TG_API_TOKEN}"
+  chatId: "${TG_CHAT_ID}"
