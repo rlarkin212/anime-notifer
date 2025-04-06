@@ -9,7 +9,7 @@ type Config struct {
 }
 
 type manualShow struct {
-	Name   string `mapstructure:"name"`
+	Title  string `mapstructure:"title"`
 	Day    string `mapstructure:"day"`
 	Time   string `mapstructure:"time"`
 	Source string `mapstructure:"source"`

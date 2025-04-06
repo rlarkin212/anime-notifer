@@ -1,7 +1,6 @@
 package telegram
 
 import (
-	"fmt"
 	"log"
 	"strconv"
 
@@ -21,7 +20,7 @@ type telegram struct {
 func NewTelegram(c *entities.Config) Sender {
 	bot, err := tgbot.NewBotAPI(c.Telegram.Token)
 	if err != nil {
-		log.Println(fmt.Sprintf("telegram bot err: %s", err.Error()))
+		log.Printf("telegram bot err: %s", err.Error())
 	}
 
 	return &telegram{
@@ -33,7 +32,7 @@ func NewTelegram(c *entities.Config) Sender {
 func (t *telegram) Send(msg string) {
 	chatId, err := strconv.ParseInt(t.config.Telegram.ChatId, 10, 64)
 	if err != nil {
-		log.Println(fmt.Sprintf("parse int err: %s", err.Error()))
+		log.Printf("parse int err: %s", err.Error())
 	}
 
 	message := tgbot.NewMessage(chatId, msg)

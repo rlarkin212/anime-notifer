@@ -67,7 +67,7 @@ func (fs *fetchService) checkSchedule(schedule *sp.Response) []sp.Item {
 	for _, x := range fs.config.ManualShows {
 		if x.Day == currentDay {
 			items = append(items, sp.Item{
-				Title:  x.Name,
+				Title:  x.Title,
 				Time:   x.Time,
 				Source: x.Source,
 			})
